@@ -37,6 +37,9 @@ def generate(model, text, audio_prompt_path, exaggeration, temperature, seed_num
         min_p=min_p,
         top_p=top_p,
         repetition_penalty=repetition_penalty,
+        max_segment_length=900,  # default trigger is >300; adjust as needed
+        max_workers=4            # number of concurrent segment jobs
+        
     )
     return (model.sr, wav.squeeze(0).numpy())
 
